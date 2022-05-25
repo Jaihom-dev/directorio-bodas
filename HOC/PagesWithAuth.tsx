@@ -1,7 +1,9 @@
+import Cookies from "js-cookie";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import Loading from "../components/Loading";
-import { AuthContextProvider } from "../context";
+import { AuthContextProvider, LoadingContextProvider } from "../context";
 
 enum TypesUsers {
   "novia",
@@ -22,8 +24,11 @@ const PagesWithAuth  = (WrappedComponent: any, authorizationByRole?: keyof typeo
     if (typeof window !== "undefined") {
       const { user } = AuthContextProvider();
       const router = useRouter();
-
-      if (!user) {
+      const sessionCookie = Cookies.get("sessionBodas");
+      const {setLoading} = LoadingContextProvider()
+      
+      
+      if (!user && !sessionCookie) {
         router.replace("/")
         return <Loading />;
       }
@@ -38,6 +43,7 @@ const PagesWithAuth  = (WrappedComponent: any, authorizationByRole?: keyof typeo
       }
 
       return <WrappedComponent {...props} />;
+      
     }
 
     // If we are on server, return null

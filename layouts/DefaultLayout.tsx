@@ -2,7 +2,7 @@ import dynamic from "next/dynamic";
 import { LoadingProvider } from "../context";
 import ButtonCrearEmpresa from "../components/ButtonCrearEmpresa";
 import { NavigationMobile } from "../components/Surface";
-import { FC } from "react";
+import { FC, useState } from "react";
 const DynamicAuthProvider = dynamic((): any =>
   import("../context").then((mod) => mod.AuthProvider)
 );
@@ -29,11 +29,12 @@ const DynamicFooterMobile = dynamic((): any =>
 );
 
 const DefaultLayout: FC = ({ children }) => {
+  const [loading, setLoading] = useState<boolean>(false);
   return (
-    <DynamicAuthProvider>
+    <DynamicAuthProvider setLoading={setLoading}>
       <DynamicSocketProvider>
         <DynamicChatsProvider>
-          <LoadingProvider>
+          <LoadingProvider loading={loading} setLoading={setLoading}>
             <DynamicToastProvider>
                 <div className="bg-color-base relative min-h-screen w-full h-full">
               <DynamicSidebarProvider>

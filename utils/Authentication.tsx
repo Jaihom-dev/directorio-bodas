@@ -14,7 +14,7 @@ export const useAuthentication = () => {
   const toast = useToast();
   const router = useRouter();
 
-  const getSessionCookie = useCallback(async(tokenID) : Promise<string | undefined> => {
+  const getSessionCookie = useCallback(async(tokenID : string) : Promise<string | undefined> => {
     if(tokenID){
       const authResult = await fetchApi({
         query: queries.auth,
@@ -23,7 +23,7 @@ export const useAuthentication = () => {
       if (authResult?.sessionCookie) {
         const { sessionCookie } = authResult;
         // Setear en localStorage token JWT
-        Cookies.set("sessionBodas", sessionCookie);
+        Cookies.set("sessionBodas", sessionCookie, {expires: 7});
         return sessionCookie
       } else {
         console.warn("No se pudo cargar la cookie de sesión por que hubo un problema")

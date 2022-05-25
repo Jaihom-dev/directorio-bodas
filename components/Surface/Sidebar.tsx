@@ -18,7 +18,7 @@ interface propsSidebar {
 export const Sidebar: FC <propsSidebar> = ({set, state}) => {
     
     const FirstList: ItemNav[] = [
-        { title: "Mi boda", route: "https://app.bodasdehoy.com" },
+        { title: "Mi boda", route: "http://192.168.10.10:3000" },
         { title: "Novia", route: "/categoria/novias" },
         { title: "Novio", route: "/categoria/novios" },
         { title: "Proveedores", route: "/categoria/proveedores" },
