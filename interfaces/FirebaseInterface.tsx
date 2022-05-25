@@ -50,5 +50,5 @@ interface MoreInfo {
   country: string;
   weddingDate: Date;
   phoneNumber: string;
-  role: string;
+  role: string[];
 }

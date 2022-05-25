@@ -15,8 +15,8 @@ export const Login: FC<propsLogin> = ({ setStage }) => {
       </div>
       <Providers setStage={setStage} />
       <FormLogin />
-        <RegisterQuestion onClick={() => setStage("register")} />
-      {/* <BusinessAccess /> */}
+      <RegisterQuestion onClick={() => setStage("register")} />
+      {/* <BusinessAccess /> */} {/* componente que no esta terminado */}
     </>
   );
 };

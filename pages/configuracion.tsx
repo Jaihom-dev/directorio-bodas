@@ -37,7 +37,9 @@ const Configuration = () => {
   const toast = useToast()
 
   const components: optionComponent[] = [
-    { title: "Mi perfil", icon: <UserIcon />, component: <MiPerfil /> },
+    { title: "Mi perfil", 
+      icon: <UserIcon />, 
+      component: <MiPerfil /> },
     {
       title: "Notificaciones",
       icon: <HeartIconOutline />,

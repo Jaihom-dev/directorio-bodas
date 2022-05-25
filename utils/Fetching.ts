@@ -122,6 +122,7 @@ type queries = {
   auth: string
   authStatus: string
   signOut: string
+  singleUpload: string;
 };
 
 export const queries: queries = {
@@ -240,6 +241,13 @@ export const queries: queries = {
           i320
         }
       }
+    }
+  }`,
+  singleUpload:`mutation($file:Upload!,$use:String)
+  {
+    singleUpload(file:$file,use:$use){
+      _id
+      i640
     }
   }`,
   getOneCategoryPost: `query ($slug:String) {

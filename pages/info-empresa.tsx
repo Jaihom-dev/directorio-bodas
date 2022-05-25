@@ -34,6 +34,8 @@ const InfoEmpresas = () => {
       icon: <Icon2 />,
     },
   ];
+
+  
   return (
     <div className="w-full bg-white">
       <div className="banner -mt-20 w-full h-40" />
@@ -50,7 +52,7 @@ const InfoEmpresas = () => {
           ))}
         </div>
         <div className="mx-auto w-max pt-8">
-          <Link href={"/login"} passHref>
+          <Link href={"/login"} passHref >
           <ButtonComponent>
             REGISTRATE <strong>GRATIS</strong>
           </ButtonComponent>

@@ -18,7 +18,7 @@ export interface UserMax extends User {
   city?: string;
   country?: string;
   weddingDate?: Date;
-  role?: string;
+  role?: string[];
   accessToken?: string;
   _id?: string;
 }

@@ -34,7 +34,8 @@ const PagesWithAuth  = (WrappedComponent: any, authorizationByRole?: keyof typeo
       }
 
       if(authorizationByRole){
-        if(user?.role?.includes(authorizationByRole)){
+        const lowerRole = user?.role?.map(item => item.toLowerCase())
+        if(lowerRole?.includes(authorizationByRole)){
           return <WrappedComponent {...props} />;
         } else {
           router.replace("/")

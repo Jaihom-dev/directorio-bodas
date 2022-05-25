@@ -32,7 +32,6 @@ const perfil = () => {
             <svg className="absolute w-full h-1 top-0 bg-primary"/>
             <h2 className="text-xl text-primary px-10 py-2">Ultima Actividad</h2>
             <p className="md:text-sm text-gray-500 px-10 text-xs">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempore quod quia sequi, assumenda sunt eius dicta eveniet eum. Soluta rem aliquid minima delectus nisi blanditiis impedit, deserunt voluptatibus incidunt quos.</p>
-
           </div>
         </div>
             

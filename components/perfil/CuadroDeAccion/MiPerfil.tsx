@@ -1,8 +1,8 @@
-import { updateEmail, updatePassword, updateProfile } from "firebase/auth";
+import { updateEmail, updatePassword, updateProfile, getAuth } from "firebase/auth";
 import { Form, Formik, useFormikContext, FormikValues } from "formik";
 import { useEffect, useState } from "react";
 import { AuthContextProvider } from "../../../context";
-import { auth } from "../../../firebase";
+import { auth,  } from "../../../firebase";
 import { BlockConfiguration } from "../../../pages/configuracion";
 import { ButtonComponent, InputField } from "../../Inputs";
 import { useToast } from '../../../hooks/useToast';
@@ -37,16 +37,20 @@ export const MiPerfil = () => {
 const DatosAcceso = () => {
   const { user, setUser } = AuthContextProvider();
   const { setFieldValue, values } =
-    useFormikContext<{ email: string; password: string, displayName : string }>();
+    useFormikContext<{ email: string; password: string, displayName : string}>();
   const [canEditEmail, setCanEditEmail] = useState(false);
   const [canEditPassword, setCanEditPassword] = useState(false);
   const [canDisplayName, setCanDisplayName] = useState(false);
-  const toast = useToast()
+  const toast = useToast();
+  const auth = getAuth();
+
 
   useEffect(() => {
     setFieldValue("email", user?.email);
     setFieldValue("displayName", user?.displayName);
   }, [user]);
+
+  
 
   const handleEditEmail = async () => {
     if (canEditEmail && auth.currentUser) {
@@ -102,7 +106,7 @@ const DatosAcceso = () => {
   return (
     <BlockConfiguration title={"Datos de acceso"}>
       <Form className="w-full flex flex-col gap-4">
-      <div className="w-full grid  flex items-center gap-2 relative">
+        <div className="w-full grid  flex items-center gap-2 relative">
           <InputField
             disabled={!canDisplayName}
             label={"Nombre visible"}
@@ -145,7 +149,6 @@ const DatosAcceso = () => {
             {canEditPassword ? "Guardar" : "Editar"}
           </button>
         </div>
-        
       </Form>
     </BlockConfiguration>
   );

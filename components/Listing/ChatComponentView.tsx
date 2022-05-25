@@ -27,7 +27,7 @@ const ChatComponentView: FC<business> = ({
     onLine?.dateConection
   );
   const { socket } = SocketContextProvider();
-  const { setChats, setConversation } = ChatContextProvider();
+  const { setChats, setConversation, setShow, show } = ChatContextProvider();
   const [IDChat, setIDChat] = useState<string | null>(null)
   const {user} = AuthContextProvider()
 
@@ -72,7 +72,8 @@ const ChatComponentView: FC<business> = ({
   };
 
   const handleCreateChat = (data : Chat) => {
-    setIDChat(data._id)
+    console.log(data)
+    //setIDChat(data._id)
     }
 
   useEffect(() => {
@@ -92,6 +93,7 @@ const ChatComponentView: FC<business> = ({
       variables: {IDChat}
     })
     setConversation({state:true, data: result})
+    setShow(!show)
   }
 
   return (

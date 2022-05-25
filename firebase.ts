@@ -1,5 +1,9 @@
 import { initializeApp } from "firebase/app";
-import { GoogleAuthProvider, FacebookAuthProvider, getAuth } from "firebase/auth";
+import { GoogleAuthProvider, FacebookAuthProvider, getAuth, onAuthStateChanged, updateProfile } from "firebase/auth";
+import { useEffect, useState } from "react";
+import {getStorage,ref, uploadBytes} from "firebase/storage"
+import { string } from "yup";
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyDVMoVLWWvolofYOcTYA0JZ0QHyng72LAM",
@@ -14,15 +18,25 @@ const firebaseConfig = {
 
 const firebaseClient = initializeApp(firebaseConfig);
 const auth = getAuth()
+//const storage = getStorage();
 
 //Providers
 const GoogleProvider = () => {
   const provider = new GoogleAuthProvider();
   provider.addScope("https://www.googleapis.com/auth/contacts.readonly");
-
   return provider;
 };
 
 const FacebookProvider = new FacebookAuthProvider();
 
 export { firebaseClient, GoogleProvider, FacebookProvider, auth };
+
+
+
+//storage
+
+
+/* export async function upload (file:File,currentUser) {
+  const fileRef = ref(storage,currentUser.uid +'.png');
+  const snapshot = await uploadBytes(fileRef,file)
+} */

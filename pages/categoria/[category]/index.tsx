@@ -223,13 +223,13 @@ export const Filters: FC<propsFilter> = ({ optionsCheckbox }) => {
   };
   return (
     <>
-      <button onClick={onClick} className="md:hidden flex px-5 gap-3 text-sm items-center text-gray-700">
+      <button onClick={onClick} className="md:hidden flex items-center px-5 gap-3 text-sm  text-gray-700">
         <BurgerIcon />
         Filtrar
       </button>
 
-      <aside className="md:col-span-2 2xl:col-span-1 bg-white h-max w-full rounded-lg shadow ">
-        <div className={`md:block ${open ? "hidden" : "block"}`}>
+      <aside className="md:col-span-2 2xl:col-span-1 bg-white h-max w-full rounded-lg shadow  ">
+        <div className={`md:block ${open ? "hidden" : "block"} `}>
           <div className="py-4 px-6 border-b border-base flex items-center justify-between gap-2 ">
             <span className="flex items-center gap-2">
               <p className="text-sm text-gray-500">Filtros activos</p>

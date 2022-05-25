@@ -9,7 +9,8 @@ const ButtonCrearEmpresa = () => {
     const router = useRouter()
     const {user} = AuthContextProvider()
     const handleClick = async () => {
-        if(user?.role?.includes("empresa")){
+        const lowerCase = user?.role?.map((item : string) => item.toLowerCase())
+        if(lowerCase?.includes("empresa")){
             router.push("/empresa")
         } else {
             router.push("/info-empresa")
